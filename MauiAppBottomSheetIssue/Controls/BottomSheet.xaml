@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="MauiAppBottomSheetIssue.Controls.BottomSheet"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="BottomSheetContentView">
+    <Grid>
+
+        <BoxView
+            x:Name="Backdrop"
+            InputTransparent="True"
+            Opacity="0">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="Backdrop_Tapped" />
+            </BoxView.GestureRecognizers>
+        </BoxView>
+
+        <ContentView
+            x:Name="SheetContainer"
+            HeightRequest="{Binding SheetHeight, Source={x:Reference BottomSheetContentView}}"
+            VerticalOptions="End">
+            <ContentView.GestureRecognizers>
+                <PanGestureRecognizer PanUpdated="SheetContainer_PanUpdated" />
+            </ContentView.GestureRecognizers>
+            <!--
+                CornerRadius="5"
+                HasShadow="False"
+            -->
+            <!--  {Binding SheetHeight, Source={x:Reference BottomSheetContentView}}  -->
+            <Border
+                x:Name="Sheet"
+                Padding="0"
+                HeightRequest="500"
+                HorizontalOptions="Fill"
+                VerticalOptions="End">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="5" />
+                </Border.StrokeShape>
+                <!--<Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                -->
+                <!--  Drag Indicator Start  -->
+                <!--
+                <OnPlatform x:TypeArguments="View">
+                    <On Platform="iOS">
+                        <Grid Margin="12">
+                            <BoxView
+                                BackgroundColor="Gray"
+                                CornerRadius="2.5"
+                                HeightRequest="5"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Start"
+                                WidthRequest="40" />
+                        </Grid>
+                    </On>
+                    <On Platform="Android">
+                        <Grid />
+                    </On>
+                </OnPlatform>
+                -->
+                <!--  Drag Indicator End  -->
+                <!--  Bottom Sheet Header Start  -->
+                <!--
+                <Grid Grid.Row="1" Background="{DynamicResource StandardPanelBackground}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <OnPlatform x:TypeArguments="View">
+                        <On Platform="iOS">
+                            <Grid Margin="12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Column="0"
+                                    FontAttributes="Bold"
+                                    FontSize="Medium"
+                                    Text="Event"
+                                    VerticalOptions="Center" />
+                                <ImageButton
+                                    Grid.Column="1"
+                                    Clicked="IOSSheetCloseButton_Clicked"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center">
+                                    <ImageButton.Source>
+                                        <FontImageSource FontFamily="IconFont" Glyph="{StaticResource CancelIconText}" />
+                                    </ImageButton.Source>
+                                </ImageButton>
+                            </Grid>
+                        </On>
+                        <On Platform="Android">
+                            <Label
+                                Margin="12"
+                                FontAttributes="Bold"
+                                FontSize="Medium"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Text="Event"
+                                VerticalOptions="Center" />
+                        </On>
+                    </OnPlatform>
+                    <BoxView
+                        Grid.Row="1"
+                        BackgroundColor="LightGray"
+                        HeightRequest="1"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Center" />
+                </Grid>
+                -->
+                <!--  Bottom Sheet Header End  -->
+
+                <!--  Bottom Sheet Content Start  -->
+                <!--  Content="{Binding SheetContent, Source={x:Reference BottomSheetContentView}}"  -->
+                <!--  Grid.Row="2"  -->
+                <ContentView Background="{DynamicResource StandardPanelBackground}" Content="{Binding SheetContent, Source={x:Reference BottomSheetContentView}}">
+                    <!--<Grid BackgroundColor="Blue">
+
+                    </Grid>-->
+                </ContentView>
+                <!--  Bottom Sheet Content End  -->
+
+                <!--</Grid>-->
+
+            </Border>
+        </ContentView>
+
+    </Grid>
+</ContentView>
